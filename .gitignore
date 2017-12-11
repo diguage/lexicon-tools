@@ -1,0 +1,9 @@
+*.gem
+*.rbc
+/.config
+
+## Environment normalization:
+/.bundle/
+
+# Build target
+/target
