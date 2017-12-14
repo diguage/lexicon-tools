@@ -37,6 +37,11 @@ from = 'EN'
 to = 'zh-CHS'
 server = 'http://openapi.youdao.com/api'
 
+
+
+dictBasePath = "#{__dir__}/dictionaries"
+englishDictPath= "#{dictBasePath}/english"
+
 # 签名，通过md5(appKey+q+salt+密钥)生成
 def createSign(appKey, word, salt, secKey)
   Digest::MD5.hexdigest("#{appKey}#{word}#{salt}#{secKey}")
@@ -46,7 +51,7 @@ File.foreach('COCA20000.txt') do |line|
   r = Record.new(line)
   unless words.include?(r.word)
     words.add(r.word)
-    fileName = "#{__dir__}/data/#{r.word}.json"
+    fileName = "#{englishDictPath}/#{r.word}.json"
 
     next if File.exist? fileName
 
