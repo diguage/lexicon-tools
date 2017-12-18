@@ -49,6 +49,7 @@ end
 
 File.foreach('COCA20000.txt') do |line|
   r = Record.new(line)
+  p r.word
   unless words.include?(r.word)
     words.add(r.word)
     fileName = "#{englishDictPath}/#{r.word}.json"

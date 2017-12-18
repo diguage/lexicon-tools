@@ -38,13 +38,14 @@ class Record
    end
 end
 
-dictBasePath = "#{__dir__}/dictionaries"
-mapDataFileName = "#{dictBasePath}/english-map-data.json"
+basePath = "#{__dir__}"
+dictBasePath = "#{basePath}/dictionaries"
+extraFileName = "#{dictBasePath}/english-extra.json"
 mapData = {}
-mapData =  MultiJson.load(IO.readlines(mapDataFileName)[0], :symbolize_keys => true) if File.exist? mapDataFileName
+mapData =  MultiJson.load(IO.readlines(extraFileName)[0], :symbolize_keys => true) if File.exist? mapDataFileName
 
-
-ankiDicFileName = "#{File.dirname(__FILE__)}/anki-coca-20000.txt"
+targetPath = "#{basePath}/target"
+ankiDicFileName = "#{targetPath}/anki-coca-20000.txt"
 # FileUtils.rm(ankiDicFileName) if File.exist? ankiDicFileName
 ankiDicFile = File.new(ankiDicFileName, "w+")
 
